@@ -37,7 +37,7 @@ test:
   requires:
     - pip
     - pytest
-    - pytest-benchmark
+    - pytest-benchmark <5.3
   commands:
     - pip check
     - pytest -v tests
