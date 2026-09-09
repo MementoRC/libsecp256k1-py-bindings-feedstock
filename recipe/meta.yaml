@@ -1,5 +1,5 @@
 {% set name = "libsecp256k1-py-bindings" %}
-{% set version = "0.4.1" %}
+{% set version = "0.8.0.1" %}
 
 package:
   name: {{ name }}
@@ -7,21 +7,21 @@ package:
 
 source:
   url: https://github.com/MementoRC/libsecp256k1-py-bindings/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: facbc0d35df65eaa7cc999edce08ba3cfd84fa4ff690da1271357f8f4c119155
+  sha256: 02623c9d7095c96c943d43e66c9442b6114716462f190d9d80257f42756b090d
 
 build:
-  number: 3
+  number: 0
   script:  {{ PYTHON }} -m pip install . --no-build-isolation --use-pep517 -vvv
 
 requirements:
   build:
     - {{ compiler('c') }}
     - {{ stdlib("c") }}
+    - pkg-config
   host:
     - cffi >=1.3.0
-    - libsecp256k1
+    - libsecp256k1 >=0.8.0,<0.9
     - pip
-    - pkgconfig
     - python
     - setuptools >=61
   run:
